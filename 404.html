@@ -46,7 +46,7 @@
 
             return response.json().then(function (payload) {
               var message = payload.message;
-              var title = payload.title;
+              var title = payload.body;
 
               // Check if the title of issue is a legitimate URL
               if (message === "Not Found" || !title || !isUrl(title)) {

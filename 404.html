@@ -58,8 +58,14 @@
               if (url.host === location.host) {
                 throw new Error("URL to redirect to is invalid!");
               }
+              
+              const queryString = window.location.search;
+              const urlParams = new URLSearchParams(queryString);
+              Array.from(urlParams.keys()).forEach((k) => {
+                  url.searchParams.append(k, urlParams.get(k))
+              })
 
-              location.replace(title);
+              location.replace(url.href);
             });
           })
           .catch(function () {
